@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>false</SelfContained>
+    <ApplicationIcon>Icons\app.ico</ApplicationIcon>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <Authors>Darth Affe</Authors>
+    <Company>Wyrez</Company>
+    <Language>en-US</Language>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Title>AMD3DConfigurator</Title>
+    <AssemblyName>AMD3DConfigurator</AssemblyName>
+    <AssemblyTitle>AMD3DConfigurator</AssemblyTitle>
+    <Copyright>Copyright © Darth Affe 2023</Copyright>
+
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="publish\**" />
+    <EmbeddedResource Remove="publish\**" />
+    <None Remove="publish\**" />
+    <Page Remove="publish\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\app.ico" />
+    <None Remove="Icons\cpu.png" />
+    <None Remove="Icons\memory.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\app.ico" />
+    <Resource Include="Icons\cpu.png" />
+    <Resource Include="Icons\memory.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="7.0.0" />
+  </ItemGroup>
+
+</Project>
