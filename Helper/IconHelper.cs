@@ -8,8 +8,8 @@ public static class IconHelper
 {
     #region DLL-Imports
 
-    const string IID_IImageList = "46EB5926-582E-4017-9FDF-E8998DAA0950";
-    const string IID_IImageList2 = "192B9D83-50FC-457B-90A0-2B82A8B5DAE1";
+    private const string IID_IImageList = "46EB5926-582E-4017-9FDF-E8998DAA0950";
+    private const string IID_IImageList2 = "192B9D83-50FC-457B-90A0-2B82A8B5DAE1";
 
     public const int SHIL_LARGE = 0x0;
     public const int SHIL_SMALL = 0x1;
@@ -25,11 +25,10 @@ public static class IconHelper
     public extern static int SHGetImageList(int iImageList, ref Guid riid, ref IImageList? ppv);
 
     [DllImport("Shell32.dll")]
-    public static extern nint SHGetFileInfo(string pszPath, uint dwFileAttributes, ref SHFILEINFO psfi, uint cbFileInfo, uint uFlags
-    );
+    public static extern nint SHGetFileInfo(string pszPath, uint dwFileAttributes, ref SHFILEINFO psfi, uint cbFileInfo, uint uFlags);
 
     [Flags]
-    enum SHGFI : uint
+    public enum SHGFI : uint
     {
         /// <summary>get icon</summary>
         Icon = 0x000000100,
@@ -80,8 +79,7 @@ public static class IconHelper
         public string szDisplayName;
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 80)]
         public string szTypeName;
-    };
-
+    }
 
     [StructLayout(LayoutKind.Sequential)]
     public struct RECT
@@ -127,6 +125,7 @@ public static class IconHelper
         public int Unused2;
         public RECT rcImage;
     }
+
     [ComImportAttribute()]
     [GuidAttribute("46EB5926-582E-4017-9FDF-E8998DAA0950")]
     [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]

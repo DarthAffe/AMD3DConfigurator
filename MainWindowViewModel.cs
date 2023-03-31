@@ -139,15 +139,12 @@ public class MainWindowViewModel : AbstractBindable
             MessageBox.Show($"An entry with the name '{NewEntry.Name}' already exists.", "Duplicate entry", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
-        else
-        {
-            ConfigEntry? existingEntry = Entries.FirstOrDefault(x => x.Exe == NewEntry.Exe);
-            if (existingEntry != null)
-                if
-                    (MessageBox.Show($"An entry for the same executable '{NewEntry.Exe}' already exists with the name '{existingEntry.Name}'.\r\nShould this one be added anyway?",
-                                     "Duplicate entry", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
-                    return;
-        }
+
+        ConfigEntry? existingEntry = Entries.FirstOrDefault(x => x.Exe == NewEntry.Exe);
+        if (existingEntry != null)
+            if (MessageBox.Show($"An entry for the same executable '{NewEntry.Exe}' already exists with the name '{existingEntry.Name}'.\r\nShould this one be added anyway?",
+                               "Duplicate entry", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
+                return;
 
         Entries.Add(NewEntry);
         NewEntry = null;

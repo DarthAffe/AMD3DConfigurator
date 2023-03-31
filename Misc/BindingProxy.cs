@@ -4,7 +4,7 @@ namespace AMD3DConfigurator.Misc;
 
 public class BindingProxy : Freezable
 {
-    protected override Freezable CreateInstanceCore() => new BindingProxy();
+    #region Properties & Fields
 
     // ReSharper disable once InconsistentNaming
     public static readonly DependencyProperty DataProperty = DependencyProperty.Register(nameof(Data), typeof(object), typeof(BindingProxy), new UIPropertyMetadata(null));
@@ -14,4 +14,12 @@ public class BindingProxy : Freezable
         get => GetValue(DataProperty);
         set => SetValue(DataProperty, value);
     }
+
+    #endregion
+
+    #region Methods
+
+    protected override Freezable CreateInstanceCore() => new BindingProxy();
+
+    #endregion
 }
